@@ -5,6 +5,8 @@ import java.util.*;
 
 public class UnfairWaitList<E> extends WaitList<E> {
 
+    HashSet<E> deletedElements = new HashSet<>();
+
     public UnfairWaitList() {
     }
 
@@ -26,6 +28,13 @@ public class UnfairWaitList<E> extends WaitList<E> {
             }
         }
 
+    }
+
+    @Override
+    public void add(E element) {
+        if (!deletedElements.contains(element)) {
+            content.add(element);
+        }
     }
 
     private void moveToBack(){

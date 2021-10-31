@@ -6,9 +6,9 @@ import task16.ordersmanagers.OrdersManager;
 import task16.ordersmanagers.IllegalTableNumber;
 
 public class TableOrdersManager implements OrdersManager {
-    private Order[] orders;
+    private final Order[] orders;
     private final int capacity;
-    private int size;
+    private int size = 0;
 
     public TableOrdersManager(int capacity) {
         this.capacity = capacity;
@@ -138,16 +138,16 @@ public class TableOrdersManager implements OrdersManager {
         if (size <= 0){
             return null;
         }
-        Order[] orders = new Order[size];
+        Order[] tempOrders = new Order[size];
         int orderIndex = 0;
         for (Order order: orders){
             if (order != null){
-                orders[orderIndex] = order;
+                tempOrders[orderIndex] = order;
                 orderIndex++;
             }
         }
 
-        return orders;
+        return tempOrders;
     }
 
     @Override
