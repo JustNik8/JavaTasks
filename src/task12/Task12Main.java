@@ -81,9 +81,10 @@ public class Task12Main {
 
         System.out.print("Input string: ");
         String testString1 = "Киев Нью-Йорк Амстердам Вена Мельбурн";
+        System.out.println(testString1);
 
         StringBuilder builder = getLine(testString1.split(" "));
-        System.out.println(builder);
+        System.out.println("Result: " + builder.toString());
 
     }
 
@@ -94,31 +95,36 @@ public class Task12Main {
     }
 
     private static StringBuilder getLine(String[] words){
-        StringBuilder res = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
-        List<String> wordList = new ArrayList<>(Arrays.asList(words));
-        Collections.sort(wordList);
-
-        res.append(wordList.get(0));
-        wordList.remove(0);
-        int max = wordList.size();
-        int count = 0;
-
-        while (true){
-
-            for (int i = 0 ; i < wordList.size(); i++){
-                //if (wordList)
-            }
-
-            count++;
-            if (wordList.size() == 0 || count == max) break;
+        if (words.length == 0){
+            return sb;
         }
 
+        List<String> strings = new ArrayList<>();
+        Collections.addAll(strings, words);
 
+        sb.append(strings.get(0));
+        strings.remove(0);
 
-        return res;
+        while (strings.size() > 0){
+            for (int i = 0; i < strings.size(); i++){
+                String a = strings.get(i).toLowerCase();
+                String b = sb.toString().toLowerCase();
+                if (a.charAt(0) == b.charAt(sb.length() - 1)) { // в конец
+                    sb.append(" ").append(strings.get(i));
+                    strings.remove(i);
+                    continue;
+                }
+                if (b.charAt(0) == a.charAt(a.length() - 1)) { //в начало
+                    sb.insert(0, " ");
+                    sb.insert(0, strings.get(i));
+                    strings.remove(i);
+                }
+            }
+        }
+
+        return sb;
 
     }
-
-
 }
