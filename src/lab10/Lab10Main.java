@@ -37,6 +37,8 @@ public class Lab10Main {
         arrayInt.fillRandoms(50);
         System.out.println(arrayInt);
 
+
+
         System.out.println("\n----------Task3----------");
         System.out.println(arrayInt.get(8));
         arrayInt.set(1, 1);
@@ -60,7 +62,12 @@ public class Lab10Main {
     }
 
     private static <E> List<E> convertArrayToList(E[] array){
-        return Arrays.asList(array);
+        //return Arrays.asList(array);
+        List<E> list = new ArrayList<>();
+        for (E elem : array){
+            list.add(elem);
+        }
+        return list;
     }
 
     private static String generateRandomString(int size){

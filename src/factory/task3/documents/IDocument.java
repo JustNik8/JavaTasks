@@ -4,5 +4,4 @@ public interface IDocument {
     double getSize();
     String getName();
     String getExtension();
-
 }

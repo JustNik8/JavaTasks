@@ -28,10 +28,11 @@ public class RegexUtils {
         return matcher.find();
     }
 
+    /*
     public static boolean checkStringMatching(String string, Pattern pattern){
         Matcher matcher = pattern.matcher(string);
         return matcher.matches();
-    }
+    }*/
 
     public static boolean isPasswordSave(String pass){
 

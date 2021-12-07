@@ -133,52 +133,55 @@ public class OrderGui extends JFrame {
         addOrderButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         addOrderButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
         addOrderButton.addActionListener(e -> {
-            JTextField tempTF = (JTextField) mainContainer.getComponent(1);
-            JRadioButton internetRB, tableRB;
+            try {
+                JTextField tempTF = (JTextField) mainContainer.getComponent(1);
+                JRadioButton internetRB, tableRB;
 
-            String firstName = tempTF.getText();
+                String firstName = tempTF.getText();
 
-            tempTF = (JTextField) mainContainer.getComponent(2);
-            String secondName = tempTF.getText();
+                tempTF = (JTextField) mainContainer.getComponent(2);
+                String secondName = tempTF.getText();
 
-            tempTF = (JTextField) mainContainer.getComponent(3);
-            int age = Integer.parseInt(tempTF.getText());
+                tempTF = (JTextField) mainContainer.getComponent(3);
+                int age = Integer.parseInt(tempTF.getText());
 
-            //12
-            internetRB = (JRadioButton) mainContainer.getComponent(12);
-            tableRB = (JRadioButton) mainContainer.getComponent(13);
-            Address address = null;
-            if (internetRB.isSelected()){
-                tempTF = (JTextField) mainContainer.getComponent(5);
-                String cityName = tempTF.getText();
+                //12
+                internetRB = (JRadioButton) mainContainer.getComponent(12);
+                tableRB = (JRadioButton) mainContainer.getComponent(13);
+                Address address = null;
+                if (internetRB.isSelected()) {
+                    tempTF = (JTextField) mainContainer.getComponent(5);
+                    String cityName = tempTF.getText();
 
-                tempTF = (JTextField) mainContainer.getComponent(6);
-                int zipCode = Integer.parseInt(tempTF.getText());
+                    tempTF = (JTextField) mainContainer.getComponent(6);
+                    int zipCode = Integer.parseInt(tempTF.getText());
 
-                tempTF = (JTextField) mainContainer.getComponent(7);
-                String streetName = tempTF.getName();
+                    tempTF = (JTextField) mainContainer.getComponent(7);
+                    String streetName = tempTF.getName();
 
-                tempTF = (JTextField) mainContainer.getComponent(8);
-                int buildingNumber = Integer.parseInt(tempTF.getText());
+                    tempTF = (JTextField) mainContainer.getComponent(8);
+                    int buildingNumber = Integer.parseInt(tempTF.getText());
 
-                tempTF = (JTextField) mainContainer.getComponent(9);
-                char buildingLetter = tempTF.getText().charAt(0);
+                    tempTF = (JTextField) mainContainer.getComponent(9);
+                    char buildingLetter = tempTF.getText().charAt(0);
 
-                tempTF = (JTextField) mainContainer.getComponent(10);
-                int apartmentNumber = Integer.parseInt(tempTF.getText());
+                    tempTF = (JTextField) mainContainer.getComponent(10);
+                    int apartmentNumber = Integer.parseInt(tempTF.getText());
 
-                address = new Address(cityName, zipCode, streetName, buildingNumber, buildingLetter, apartmentNumber);
-                Customer customer = new Customer(firstName, secondName, age, address);
+                    address = new Address(cityName, zipCode, streetName, buildingNumber, buildingLetter, apartmentNumber);
+                    Customer customer = new Customer(firstName, secondName, age, address);
 
-                InternetOrdersManager manager = Storage.getInternetOrdersManager();
-                InternetOrder order = new InternetOrder(customer);
-                manager.add(order);
-            }
-            else if (tableRB.isSelected()){
-                Customer customer = new Customer(firstName, secondName, age, Address.EMPTY_ADDRESS);
-                TableOrdersManager manager = Storage.getTableOrdersManager();
-                TableOrder order = new TableOrder(customer);
-                manager.add(order, manager.itemsQuantity()+1);
+                    InternetOrdersManager manager = Storage.getInternetOrdersManager();
+                    InternetOrder order = new InternetOrder(customer);
+                    manager.add(order);
+                } else if (tableRB.isSelected()) {
+                    Customer customer = new Customer(firstName, secondName, age, Address.EMPTY_ADDRESS);
+                    TableOrdersManager manager = Storage.getTableOrdersManager();
+                    TableOrder order = new TableOrder(customer);
+                    manager.add(order, manager.itemsQuantity() + 1);
+                }
+            }catch (Exception exception){
+                showMessage("Ошибка");
             }
         });
 
@@ -241,14 +244,13 @@ public class OrderGui extends JFrame {
 
     }
 
-    private void addSomeShit(){
-        InternetOrdersManager internetManager = Storage.getInternetOrdersManager();
-        Customer customer = new Customer("Vasya", "Pupkin", 19, Address.EMPTY_ADDRESS);
-        InternetOrder order = new InternetOrder(customer);
-        order.add(new Drink(200, "Beer", "beer desc", 4.8, DrinkTypeEnum.BEER));
-        order.add(new Dish(400, "pelmeni", "pelmeni desc"));
-
-        internetManager.add(order);
+    private void showMessage(String text){
+        JOptionPane.showMessageDialog(
+                null,
+                text,
+                "Attention",
+                JOptionPane.PLAIN_MESSAGE
+        );
     }
 
     public void updateOrdersList(){

@@ -1,6 +1,5 @@
 package task16.menuitems;
 
-import java.util.Objects;
 
 public final class Drink extends MenuItem implements Alcoholable{
     private final double alcoholVol;

@@ -18,7 +18,6 @@ public class UnfairWaitList<E> extends WaitList<E> {
         }
 
         //Else try to find this element it queue
-        Queue<E> elements = new ArrayDeque<>();
 
         int contentSize = content.size();
         for (int i = 0; i < contentSize; i++){

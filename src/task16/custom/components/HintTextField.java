@@ -9,8 +9,6 @@ public class HintTextField extends JTextField {
     private final Font gainFont = new Font("Tahoma", Font.PLAIN, 14);
     private final Font lostFont = new Font("Tahoma", Font.ITALIC, 14);
 
-
-
     public HintTextField(final String hint, final int columns){
         super(columns);
         setText(hint);

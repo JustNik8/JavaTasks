@@ -71,10 +71,14 @@ public class Task12Main {
         String number1 = "89175655655";
         String number2 = "+79175655655";
         String number3 = "+104289652211";
+        String number4 = "+43705631464811";
+
 
         System.out.println(Phone.getFormattedNumber(number1));
         System.out.println(Phone.getFormattedNumber(number2));
         System.out.println(Phone.getFormattedNumber(number3));
+        System.out.println(Phone.getFormattedNumber(number4));
+
 
         //Task5
         System.out.println("----------Task5----------");
