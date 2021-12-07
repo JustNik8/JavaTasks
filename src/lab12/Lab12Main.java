@@ -12,8 +12,9 @@ public class Lab12Main {
 
         //Task 1
         System.out.println("----------Task1----------");
-        String priceString = "3.0 RU, 57.0 USD 0.43 EU, 6.7 USD 9.0 ERR, 4.563 UKR, 0.004 EU";
+        String priceString = "3.0 RU, 57.0 USD 0.43 EU, 6.7 USD 9.0 ERR, 4.563 UKR, 0.004 EU, 5 RUB";
         Pattern floatingPricePattern = Pattern.compile("\\d+\\.\\d{0,2}\\s*(RU|EU|USD)");
+        //Pattern floatingPricePattern = Pattern.compile("\\d+(?=.{0,1}\\d{0,2})\\s*(RU|EU|USD)");
         System.out.println(RegexUtils.getListByPattern(priceString, floatingPricePattern));
 
         //Task2
@@ -50,10 +51,10 @@ public class Lab12Main {
         System.out.println("----------Task4----------");
         //Declare source string
         String emailString = "user@example.com, root@localhost " +
-                "myhost@@@com.ru, @my.ru, Julia String";
+                "myhost@@@com.ru, @my.ru, Julia String, mvolkov_test@mail.yandex.ru";
 
         //Declare pattern
-        Pattern emailPattern = Pattern.compile("(\\w+)(@)(\\w+)([.]?)(\\w+)");
+        Pattern emailPattern = Pattern.compile("(\\w+)(@)[(\\w+)([.]?)]+(\\w+)");
 
         System.out.println(RegexUtils.getListByPattern(emailString, emailPattern));
 

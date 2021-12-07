@@ -33,8 +33,10 @@ public class Lab10Main {
         System.out.println(stringList + " " + stringList.getClass().getSimpleName());
 
         System.out.println("\n----------Task2----------");
-        Array<Integer> arrayInt = new Array<>(10);
-        arrayInt.fillRandoms(50);
+        Array<Object> arrayInt = new Array<>(10);
+        arrayInt.fillRandoms(40);
+        arrayInt.set(9,"test");
+        arrayInt.set(2, new ArrayList<>());
         System.out.println(arrayInt);
 
 
@@ -102,3 +104,4 @@ public class Lab10Main {
     }
 
 }
+
